@@ -1,0 +1,11 @@
+{
+  "name": "maroqi/pmb",
+  "authors": [{
+    "name": "maroqijalil",
+    "email": "jalilpro31@gmail.com"
+  }],
+  "require": {},
+  "scripts": {
+    "server": "php -S localhost:8000 -t public/"
+  }
+}
