@@ -1,19 +1,12 @@
 <?php
 
-function studentAll()
-{
-  $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);
+require_once APP . 'core/models/student.php';
 
-  $sql = "SELECT * FROM students";
-  $stmt = $db->prepare($sql);
-
-  $stmt->execute();
-
-  return $stmt->fetchAll();
+function getAllStudent() {
+  return getStudentModels();
 }
 
-function studentInsert()
-{
+function insertStudent() {
   $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
   $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRING);
   $gender = filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_STRING);
@@ -23,8 +16,6 @@ function studentInsert()
   $photo = "";
 
   if ($name && $address && $gender && $religion && $school && $department) {
-    $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);
-
     $pass_image = true;
     $photo_check = getimagesize($_FILES['photo']['tmp_name']);
     if ($photo_check) {
@@ -46,10 +37,6 @@ function studentInsert()
       }
     }
 
-    $sql = "INSERT INTO students (name, address, gender, religion, school, department, photo) 
-            VALUES (:name, :address, :gender, :religion, :school, :department, :photo)";
-    $stmt = $db->prepare($sql);
-
     $params = array(
       ":name" => $name,
       ":address" => $address,
@@ -61,37 +48,27 @@ function studentInsert()
     );
 
     if ($pass_image) {
-      $saved = $stmt->execute($params);
-
-      if ($saved) {
+      if (storeStudentModel($params)) {
         header("Location: /");
       };
     }
   }
 }
 
-function studentDelete()
+function deleteStudent()
 {
-  $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);
-
   $id = filter_input(INPUT_POST, 'student_id', FILTER_VALIDATE_INT);
-
-  $sql = "DELETE FROM students WHERE student_id=:student_id";
-  $stmt = $db->prepare($sql);
 
   $params = array(
     ":student_id" => $id,
   );
 
-  $deleted = $stmt->execute($params);
-
-  if ($deleted) {
+  if (deleteStudentModelById($params)) {
     header("Location: /");
   };
 }
 
-function studentUpdate()
-{
+function updateStudent() {
   $id = filter_input(INPUT_POST, 'student_id', FILTER_VALIDATE_INT);
   $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
   $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRING);
@@ -103,8 +80,6 @@ function studentUpdate()
   $photo = "";
 
   if ($name && $address && $gender && $religion && $school && $department) {
-    $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);
-
     $pass_image = true;
     $photo_check = getimagesize($_FILES['photo']['tmp_name']);
     if ($photo_check) {
@@ -128,17 +103,6 @@ function studentUpdate()
       $photo = $photo_ori;
     }
 
-    $sql = "UPDATE students
-          SET name=:name,
-          address=:address,
-          gender=:gender,
-          religion=:religion,
-          school=:school,
-          department=:department,
-          photo=:photo
-          WHERE student_id=:student_id";
-    $stmt = $db->prepare($sql);
-
     $params = array(
       ":student_id" => $id,
       ":name" => $name,
@@ -151,9 +115,7 @@ function studentUpdate()
     );
 
     if ($pass_image) {
-      $stmt->execute($params);
-
-      if ($stmt->rowCount() > 0) {
+      if (updateStudentModel($params)->rowCount() > 0) {
         header("Location: /");
       };
     }

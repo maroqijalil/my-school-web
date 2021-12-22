@@ -1,14 +1,14 @@
 <?php
 
-require APP . 'presentation/middleware/auth/auth.php';
+require_once APP . 'presentation/middleware/auth/auth.php';
 
-require APP . 'presentation/controllers/auth/auth.php';
-require APP . 'presentation/controllers/main/student.php';
+require_once APP . 'presentation/controllers/auth/auth.php';
+require_once APP . 'presentation/controllers/main/student.php';
 
 switch ($_SERVER['REQUEST_URI']) {
   case '/':
     if (!authenticate()) {
-      $students = studentAll();
+      $students = getAllStudent();
 
       require APP . 'presentation/views/main/index.php';
     }
