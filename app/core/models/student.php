@@ -1,5 +1,11 @@
 <?php
 
+define("STUDENT_IMAGE_PATH", 'assets/img/siswa' . DIRECTORY_SEPARATOR);
+
+if (!file_exists(ROOT . STUDENT_IMAGE_PATH)) {
+  mkdir(ROOT . STUDENT_IMAGE_PATH, 0777, true);
+}
+
 function getStudentModels()
 {
   $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);

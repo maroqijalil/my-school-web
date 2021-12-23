@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Portal PMB</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="<?= URL . 'assets/css/app.css' ?>" />
-
-  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.2.1/dist/alpine.js" defer></script>
-  <script src="<?= URL . 'assets/js/app.js' ?>"></script>
-</head>
+<?php 
+$title = "Portal My School | Daftar";
+include APP . 'presentation/views/components/head.php'; 
+?>
 
 <body>
   <div class="font-sans antialiased text-gray-900">

@@ -19,7 +19,7 @@ function insertStudent() {
     $pass_image = true;
     $photo_check = getimagesize($_FILES['photo']['tmp_name']);
     if ($photo_check) {
-      $photo_name = 'assets/img/' . time() . '_' . basename($_FILES['photo']['name']);
+      $photo_name = STUDENT_IMAGE_PATH . time() . '_' . basename($_FILES['photo']['name']);
       $photo_dir = ROOT . $photo_name;
 
       if ($_FILES['photo']['size'] > 2000000) {
@@ -83,7 +83,7 @@ function updateStudent() {
     $pass_image = true;
     $photo_check = getimagesize($_FILES['photo']['tmp_name']);
     if ($photo_check) {
-      $photo_name = 'assets/img/' . time() . '_' . basename($_FILES['photo']['name']);
+      $photo_name = STUDENT_IMAGE_PATH . time() . '_' . basename($_FILES['photo']['name']);
       $photo_dir = ROOT . $photo_name;
 
       if ($_FILES['photo']['size'] > 2000000) {
