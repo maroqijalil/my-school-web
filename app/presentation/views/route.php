@@ -10,7 +10,7 @@ switch ($_SERVER['REQUEST_URI']) {
     if (!authenticate()) {
       $students = getAllStudent();
 
-      require APP . 'presentation/views/main/student/index.php';
+      require APP . 'presentation/views/main/student/halamanUtama.php';
     }
     break;
 
@@ -25,6 +25,13 @@ switch ($_SERVER['REQUEST_URI']) {
       require APP . 'presentation/views/auth/register.php';
     }
     break;
+
+    case '/user':
+      if (!authenticate()) {
+        $students = getAllStudent();
+        require APP . 'presentation/views/main/student/index.php';
+      }
+      break;
 
   default:
     http_response_code(404);

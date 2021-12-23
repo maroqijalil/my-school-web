@@ -404,19 +404,26 @@ footer{
             <a href="#" class="logo">MySchool</a>
             <!--- menu --->
             <ul>
-                <li><a href="#" class="active">Home</a></li>
+                <li><a href="/" class="active">Home</a></li>
                 <li><a href="/user">Manajemen Siswa</a></li>
-                <li><a href="#" class="active">Logout</a></li>
+                <li><form method="POST" action="" >
+                <input name="logout" type="hidden">
+                <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                  <span>Keluar</span>
+                </a>
+              </form></li>
             </ul>
         </nav>
- 
+        
         <!--- text --->
         <div class="text-container">
             <p>Hallo,</p>
             <p>Admin</p>
             <p>Selamat datang di Halaman Utama Admin</p>
-            <button class="hire-btn">Home</button>
-            <button class="down-cv">Manajemen Siswa</button>
+            <button class="hire-btn" onclick="location.href='/'">Home</button>
+            <!-- <button class="down-cv">Manajemen Siswa</button> -->
+            <button onclick="location.href='/user'" type="button" class="down-cv">Manajemen Siswa</button>
+            <!-- <a href="/user" class="down-cv">Manajemen Siswa</a> -->
         </div>
         <!-- model -->
         <!-- <img alt="model" class="model" src="images/ilustrasi.jpg">   -->
