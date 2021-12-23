@@ -263,17 +263,17 @@
 
                           <input type="hidden" name="photo_ori" value="<?= $student['photo'] ?>">
 
-                          <label class="block mt-4 text-sm w-1/2" id="image-item">
+                          <label class="block mt-4 text-sm w-1/2" id="image-item-<?= $student['student_id'] ?>">
                             <span class="text-gray-700 dark:text-gray-400" id="image-name">
                               Foto
                             </span>
 
-                            <input id="image-place" type="file" name="photo" class="form-control hidden">
-                            <img class="mt-1 mb-2" style="height: 75px; width: 50%; object-fit: cover;" id="image-preview" src="<?= $student['photo'] ?>">
+                            <input id="image-place-<?= $student['student_id'] ?>" data-id="<?= $student['student_id'] ?>" type="file" name="photo" class="form-control hidden">
+                            <img class="mt-1 mb-2" style="height: 75px; width: 50%; object-fit: cover;" id="image-preview-<?= $student['student_id'] ?>" src="<?= $student['photo'] ?>">
 
                             <button
                               class="px-2 py-1 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-sp-primary-400 border border-transparent rounded active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-                              id="insert-image" type="button">
+                              id="insert-image" data-id="<?= $student['student_id'] ?>" type="button">
                               Ubah Gambar
                             </button>
                           </label>
@@ -393,17 +393,17 @@
 
               <form method="POST" action="" enctype="multipart/form-data">
 
-                <label class="block mt-4 text-sm w-1/2" id="image-item">
+                <label class="block mt-4 text-sm w-1/2" id="image-item-add">
                   <span class="text-gray-700 dark:text-gray-400" id="image-name">
                     Foto
                   </span>
 
-                  <input id="image-place" type="file" name="photo" class="form-control hidden">
-                  <img class="mt-1 mb-2" id="image-preview" src="">
+                  <input id="image-place-add" type="file" name="photo" class="form-control hidden">
+                  <img class="mt-1 mb-2" id="image-preview-add" src="">
 
                   <button
                     class="px-2 py-1 text-xs font-medium leading-5 text-white transition-colors duration-150 bg-sp-primary-400 border border-transparent rounded active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-                    id="insert-image" type="button">
+                    id="insert-image-add" type="button">
                     Upload Gambar
                   </button>
                 </label>
@@ -508,12 +508,12 @@
       });
 
       $("body").on('click', "#update-student", function (e) {
-        var studentId = $(this).data(("id"));
+        var studentId = $(this).data("id");
         $(`#modal-update-student-${studentId}`).removeClass('hidden').addClass('flex');
       });
 
       $("body").on('click', "#update-student-close", function (e) {
-        var studentId = $(this).data(("id"));
+        var studentId = $(this).data("id");
         $(`#modal-update-student-${studentId}`).removeClass('flex').addClass('hidden');
       });
 
@@ -530,11 +530,13 @@
       }
 
       $("body").on('change', "input[id*='image-place']", function (e) {
-        readURL($("#image-item").children("img"), this);
+        var num = $(this).data("id");
 
-        $("#image-item").children("#insert-image").html("Ubah Gambar");
+        readURL($(`#image-item-${num}`).children("img"), this);
 
-        $("#image-item").children("img").css({
+        $(`#image-item-${num}`).children("#insert-image").html("Ubah Gambar");
+
+        $(`#image-item-${num}`).children("img").css({
           "height": "75px",
           "width": "50%",
           "object-fit": "cover"
@@ -543,7 +545,23 @@
 
       $("body").on("click", "#insert-image", function () {
         var num = $(this).data("id");
-        $("#image-place").click();
+        $(`#image-place-${num}`).click();
+      });
+
+      $("body").on('change', "input[id='image-place-add']", function (e) {
+        readURL($("#image-item-add").children("img"), this);
+
+        $("#image-item-add").children("#insert-image-add").html("Ubah Gambar");
+
+        $("#image-item-add").children("img").css({
+          "height": "75px",
+          "width": "50%",
+          "object-fit": "cover"
+        });
+      });
+
+      $("body").on("click", "#insert-image-add", function () {
+        $("#image-place-add").click();
       });
     });
   </script>
