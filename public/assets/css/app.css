@@ -1,17 +1,6 @@
 /*! tailwindcss v2.2.19 | MIT License | https://tailwindcss.com */
 
-/*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
-
-/*
-Document
-========
-*/
-
-/**
-Use a better box model (opinionated).
-*/
-
-/* Spiceso Color */
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
 
 .shadow-outline-sp-primary { 
   box-shadow: 0 0 0 3px #afd5ef; 
@@ -142,19 +131,9 @@ body {
 Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
 */
 
-body {
-  font-family:
-		system-ui,
-		-apple-system, /* Firefox supports this but not yet `system-ui` */
-		'Segoe UI',
-		Roboto,
-		Helvetica,
-		Arial,
-		sans-serif,
-		'Apple Color Emoji',
-		'Segoe UI Emoji';
+*, body {
+  font-family: "Poppins", sans-serif !important;
 }
-
 /*
 Grouping content
 ================
