@@ -6,7 +6,7 @@ define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
 define('URL', URL_PROTOCOL . URL_DOMAIN . DIRECTORY_SEPARATOR);
 
 define('DB_HOST', "localhost");
-define('DB_PORT', "5432");
+define('DB_PORT', "3306");
 define('DB_USER', "root");
 define('DB_PASS', "");
 define('DB_NAME', "pmb_its");
