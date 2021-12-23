@@ -420,7 +420,7 @@ footer{
         </div>
         <!-- model -->
         <!-- <img alt="model" class="model" src="images/ilustrasi.jpg">   -->
-        <img aria-hidden="true" class="model" src="<?= URL . 'assets/img/bg-card' ?>.jpg" alt="Office"/>
+        <img aria-hidden="true" class="model" src="<?= URL . 'assets/img/bg-card.png' ?>" alt="Office"/>
     </section>
 
     <!-- <div class="social">

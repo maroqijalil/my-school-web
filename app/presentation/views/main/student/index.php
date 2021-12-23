@@ -19,14 +19,14 @@ include APP . 'presentation/views/components/head.php';
       <main class="h-full overflow-y-auto">
         <div class="container px-6 mx-auto grid">
           <h2 class="mt-6 text-3xl font-bold text-gray-900">
-            Data Calon Mahasiswa
+            Data Siswa
           </h2>
           <a class="mt-6 flex items-center justify-between p-4 mb-8 text-sm font-semibold text-white bg-sp-primary-400 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple" href="#" id="add-student">
             <div class="flex items-center gap-2">
-              <span><?php count($students); ?> Mahasiswa</span>
+              <span><?php count($students); ?> Siswa</span>
             </div>
             <span class="flex items-center gap-2">
-              <p>Tambah Calon Mahasiswa</p>
+              <p>Tambah Siswa</p>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
               </svg>
@@ -114,7 +114,7 @@ include APP . 'presentation/views/components/head.php';
 
                         <div class="mt-4 mb-6">
                           <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-400">
-                            Hapus data Calon Mahasiswa
+                            Hapus data Siswa
                           </p>
                           <p class="text-sm text-gray-700 dark:text-gray-400">
                             Apakah Anda ingin menghapus data <?= $student['name'] ?>?
@@ -151,7 +151,7 @@ include APP . 'presentation/views/components/head.php';
                         <div class="mt-4">
 
                           <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-400">
-                            Edit Data Calon Mahasiswa
+                            Edit Data Siswa
                           </p>
 
                           <form method="POST" action="" enctype="multipart/form-data">
@@ -258,7 +258,7 @@ include APP . 'presentation/views/components/head.php';
             <div class="mt-4">
 
               <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-400">
-                Tambah Daftar Calon Mahasiswa
+                Tambah Daftar Siswa
               </p>
 
               <form method="POST" action="" enctype="multipart/form-data">

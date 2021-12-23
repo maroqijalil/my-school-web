@@ -11,13 +11,13 @@ include APP . 'presentation/views/components/head.php';
     <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
       <div class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
         <div class="flex flex-col overflow-y-auto md:flex-row">
-          <div class="h-32 md:h-auto md:w-1/2">
-            <img aria-hidden="true" class="object-cover w-full h-full" src="<?= URL . 'assets/img/bg-card' ?>.jpg" alt="Office" />
+          <div class="h-32 md:h-auto md:w-1/2 flex flex-col justify-center">
+            <img aria-hidden="true" class="object-center w-full" src="<?= URL . 'assets/img/bg-card.png' ?>" alt="Office" />
           </div>
           <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div class="w-full">
               <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
-                Selamat Datang pada Portal Penerimaan Mahasiswa Baru ITS
+                Selamat Datang pada Portal Pembelajaran My School
               </h1>
               <form method="POST" action="">
                 <label class="block text-sm">
