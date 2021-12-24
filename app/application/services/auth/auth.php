@@ -15,7 +15,11 @@ function login()
         session_start();
         $_SESSION["user"] = $user;
 
-        header("Location: /");
+        if ($user['role'] == 2) {
+          header("Location: /siswa");
+        } else {
+          header("Location: /");
+        }
       }
     } else {
       header("Location: /daftar");

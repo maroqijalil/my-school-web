@@ -14,7 +14,13 @@ function redirectIfAuthenticate() {
   session_start();
 
   if (isset($_SESSION['user'])) {
-    header("Location: /");
+    $user = $_SESSION['user'];
+
+    if ($user['role'] == 2) {
+      header("Location: /siswa");
+    } else {
+      header("Location: /");
+    }
   } else {
     return false;
   }
