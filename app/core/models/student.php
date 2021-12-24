@@ -32,17 +32,19 @@ function getStudentModelById($id)
   return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-function storeStudentModel($params) {
+function storeStudentModel($params)
+{
   $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);
 
-  $sql = "INSERT INTO students (nis, name, address, gender, religion, school, class, photo) 
-          VALUES (:nis, :name, :address, :gender, :religion, :school, :class, :photo)";
+  $sql = "INSERT INTO students (nis, user_id, password, name, address, gender, religion, school, class, photo) 
+          VALUES (:nis, :user_id, :password, :name, :address, :gender, :religion, :school, :class, :photo)";
   $stmt = $db->prepare($sql);
 
   return $stmt->execute($params);
 }
 
-function deleteStudentModelById($params) {
+function deleteStudentModelById($params)
+{
   $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);
 
   $sql = "DELETE FROM students WHERE student_id=:student_id";
@@ -51,7 +53,8 @@ function deleteStudentModelById($params) {
   return $stmt->execute($params);
 }
 
-function updateStudentModel($params) {
+function updateStudentModel($params)
+{
   $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);
 
   $sql = "UPDATE students

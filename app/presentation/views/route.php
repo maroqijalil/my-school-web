@@ -88,9 +88,11 @@ switch ($_SERVER['REQUEST_URI']) {
     }
     break;
 
-  case '/user':
+  case '/siswa':
     if (!authenticate()) {
-      $students = getAllStudent();
+      $user = $_SESSION['user'];
+      $student = getStudent($user['user_id']);
+
       require APP . 'presentation/views/main/student/index.php';
     }
     break;

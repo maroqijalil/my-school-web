@@ -15,7 +15,11 @@ function login()
         session_start();
         $_SESSION["user"] = $user;
 
-        header("Location: /");
+        if ($user['role'] == 2) {
+          header("Location: /siswa");
+        } else {
+          header("Location: /");
+        }
       }
     } else {
       header("Location: /daftar");
@@ -33,11 +37,11 @@ function register()
     echo "Password konfirmasi tidak sama!";
   } else {
     if ($email && $password && $name) {
-
       $params = array(
         ":name" => $name,
         ":password" => $password,
-        ":email" => $email
+        ":email" => $email,
+        ":role" => 0,
       );
 
       if (storeUserModel($params)) {

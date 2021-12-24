@@ -47,8 +47,8 @@ include APP . 'presentation/views/components/head.php';
                     <th class="px-4 py-3 w-2/12">Nama</th>
                     <th class="px-4 py-3 w-3/12">Alamat</th>
                     <th class="px-4 py-3 w-2/12">Agama</th>
-                    <th class="px-4 py-3 w-2/12">Asal</th>
                     <th class="px-4 py-3 w-2/12">Kelas</th>
+                    <th class="px-4 py-3 w-2/12">Password</th>
                     <th class="px-4 py-3 w-1/12">Aksi</th>
                   </tr>
                 </thead>
@@ -92,10 +92,10 @@ include APP . 'presentation/views/components/head.php';
                       <?= $student['religion'] ?>
                     </td>
                     <td class="px-4 py-3 text-sm">
-                      <?= $student['school'] ?>
+                      <?= $student['class'] ?>
                     </td>
                     <td class="px-4 py-3 text-sm">
-                      <?= $student['class'] ?>
+                      <?= $student['password'] ?>
                     </td>
                     <td class="px-4 py-3 text-sm flex gap-3">
                       <a
