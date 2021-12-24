@@ -58,11 +58,11 @@ include APP . 'presentation/views/components/head.php';
 
                 <label class="block mt-4 text-sm">
                   <span class="text-gray-700 dark:text-gray-400">
-                    Total yang harus dibayar
+                    Total Pembayaran
                   </span>
                   <input
                     class="rounded border-gray-300 block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
-                    name="payment_date" type="number" required />
+                    name="total" type="number" required />
                 </label>
 
                 <footer class="flex flex-col items-center justify-end gap-2 sm:flex-row bg-white dark:bg-gray-800 mt-6">

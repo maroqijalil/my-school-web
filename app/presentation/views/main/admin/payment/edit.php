@@ -81,6 +81,15 @@ include APP . 'presentation/views/components/head.php';
                     name="payment_date" value="<?= $payment['payment_date'] ?>" type="date" required />
                 </label>
 
+                <label class="block mt-4 text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">
+                    Total Pembayaran
+                  </span>
+                  <input
+                    class="block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                    name="total" value="<?= $payment['total'] ?>" type="number" required />
+                </label>
+
                 <footer class="flex flex-col items-center justify-end gap-2 sm:flex-row bg-white dark:bg-gray-800 mt-6">
                   <a id="update-payment-close" type="button" href="/daftar-pembayaran"
                     class="w-full px-5 py-3 text-sm font-medium leading-5 text-gray-700 transition-colors duration-150 border border-gray-400 rounded-lg dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
