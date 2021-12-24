@@ -4,6 +4,8 @@ require_once APP . 'presentation/middleware/auth/auth.php';
 
 require_once APP . 'presentation/controllers/auth/auth.php';
 require_once APP . 'presentation/controllers/main/student/student.php';
+require_once APP . 'presentation/controllers/main/teacher/teacher.php';
+require_once APP . 'presentation/controllers/main/payment/payment.php';
 
 switch ($_SERVER['REQUEST_URI']) {
   case '/':
@@ -25,6 +27,37 @@ switch ($_SERVER['REQUEST_URI']) {
   case '/daftar-siswa/tambah':
     if (!authenticate()) {
       require APP . 'presentation/views/main/admin/student/create.php';
+    }
+    break;
+
+  case '/daftar-guru':
+    if (!authenticate()) {
+      $teachers = getAllTeacher();
+
+      require APP . 'presentation/views/main/admin/teacher/index.php';
+    }
+    break;
+
+  case '/daftar-guru/tambah':
+    if (!authenticate()) {
+      require APP . 'presentation/views/main/admin/teacher/create.php';
+    }
+    break;
+
+  case '/daftar-pembayaran':
+    if (!authenticate()) {
+      $payments = getAllPayment();
+      $students = getAllStudent();
+
+      require APP . 'presentation/views/main/admin/payment/index.php';
+    }
+    break;
+
+  case '/daftar-pembayaran/tambah':
+    if (!authenticate()) {
+      $students = getAllStudent();
+
+      require APP . 'presentation/views/main/admin/payment/create.php';
     }
     break;
 
