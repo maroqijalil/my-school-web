@@ -29,7 +29,7 @@
         <?php if ($page == "wali") { ?>
           <span class="absolute inset-y-0 left-0 w-2 bg-sp-primary-100 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
         <?php } ?>
-        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="#">
+        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="/daftar-ortu">
           <?php include APP . 'presentation/views/components/icons/users.php'; ?>
           <span class="ml-4">Wali</span>
         </a>

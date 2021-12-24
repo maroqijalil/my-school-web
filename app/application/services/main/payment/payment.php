@@ -46,7 +46,7 @@ function insertPayment() {
     );
 
     if ($pass_image) {
-      if (storepaymentModel($params)) {
+      if (storePaymentModel($params)) {
         header("Location: /daftar-pembayaran");
       };
     }

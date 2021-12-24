@@ -6,6 +6,7 @@ require_once APP . 'presentation/controllers/auth/auth.php';
 require_once APP . 'presentation/controllers/main/student/student.php';
 require_once APP . 'presentation/controllers/main/teacher/teacher.php';
 require_once APP . 'presentation/controllers/main/payment/payment.php';
+require_once APP . 'presentation/controllers/main/parent/parent.php';
 
 switch ($_SERVER['REQUEST_URI']) {
   case '/':
@@ -27,6 +28,20 @@ switch ($_SERVER['REQUEST_URI']) {
   case '/daftar-siswa/tambah':
     if (!authenticate()) {
       require APP . 'presentation/views/main/admin/student/create.php';
+    }
+    break;
+
+  case '/daftar-ortu':
+    if (!authenticate()) {
+      $parents = getAllParent();
+
+      require APP . 'presentation/views/main/admin/parent/index.php';
+    }
+    break;
+
+  case '/daftar-ortu/tambah':
+    if (!authenticate()) {
+      require APP . 'presentation/views/main/admin/parent/create.php';
     }
     break;
 

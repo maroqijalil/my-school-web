@@ -4,6 +4,9 @@
 <?php
 $title = "Portal My School | Admin";
 include APP . 'presentation/views/components/head.php';
+
+require_once APP . 'presentation/controllers/main/payment/payment.php';
+$students = getAllStudent();
 ?>
 
 <body>
@@ -58,17 +61,13 @@ include APP . 'presentation/views/components/head.php';
                   <select
                     class="block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
                     name="student_id" placeholder="Pilih Nama Siswa" required>
-                    <?php 
-                    foreach ($students as $student) {
-                        if ($payment['student_id'] == $student['student_id']) { 
-                    ?>
-                    <option value="<?= $student['student_id'] ?>" selected><?= $student['name'] ?></option>
-                    <?php } else { ?>
-                    <option value="<?= $student['student_id'] ?>"><?= $student['name'] ?></option>
-                    <?php
-                      }
-                    } 
-                    ?>
+                    <?php foreach ($students as $student) { ?>
+                      <?php if ($payment['student_id'] == $student['student_id']) { ?>
+                        <option value="<?= $student['student_id'] ?>" selected><?= $student['name'] ?></option>
+                      <?php } else { ?>
+                        <option value="<?= $student['student_id'] ?>"><?= $student['name'] ?></option>
+                      <?php } ?>
+                    <?php } ?>
                   </select>
                 </label>
 
@@ -77,7 +76,7 @@ include APP . 'presentation/views/components/head.php';
                     Tanggal Pembayaran
                   </span>
                   <input
-                    class="block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                    class="rounded border-gray-300 block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
                     name="payment_date" value="<?= $payment['payment_date'] ?>" type="date" required />
                 </label>
 
@@ -86,7 +85,7 @@ include APP . 'presentation/views/components/head.php';
                     Total Pembayaran
                   </span>
                   <input
-                    class="block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                    class="rounded border-gray-300 block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
                     name="total" value="<?= $payment['total'] ?>" type="number" required />
                 </label>
 
