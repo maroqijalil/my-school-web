@@ -48,7 +48,7 @@ include APP . 'presentation/views/components/head.php';
                     <th class="px-4 py-3 w-3/12">Alamat</th>
                     <th class="px-4 py-3 w-2/12">Agama</th>
                     <th class="px-4 py-3 w-2/12">Asal</th>
-                    <th class="px-4 py-3 w-2/12">Departemen</th>
+                    <th class="px-4 py-3 w-2/12">Kelas</th>
                     <th class="px-4 py-3 w-1/12">Aksi</th>
                   </tr>
                 </thead>
@@ -95,7 +95,7 @@ include APP . 'presentation/views/components/head.php';
                       <?= $student['school'] ?>
                     </td>
                     <td class="px-4 py-3 text-sm">
-                      <?= $student['department'] ?>
+                      <?= $student['class'] ?>
                     </td>
                     <td class="px-4 py-3 text-sm flex gap-3">
                       <button
@@ -216,6 +216,15 @@ include APP . 'presentation/views/components/head.php';
 
                           <label class="block mt-4 text-sm">
                             <span class="text-gray-700 dark:text-gray-400">
+                              NIS
+                            </span>
+                            <input
+                              class="block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                              name="nis" value="<?= $student['nis'] ?>" placeholder="NIS" required />
+                          </label>
+
+                          <label class="block mt-4 text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">
                               Nama
                             </span>
                             <input
@@ -240,13 +249,22 @@ include APP . 'presentation/views/components/head.php';
                             <select
                               class="block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
                               name="gender" placeholder="Jenis Kelamin" required value="<?= $student['gender'] ?>">
-                              <?php if ($student['gender'] == 'L') { ?>
-                              <option value="L" selected>Laki-laki</option>
-                              <option value="P">Perempuan</option>
-                              <?php } else if ($student['gender'] == 'P') { ?>
-                              <option value="L">Laki-laki</option>
-                              <option value="P" selected>Perempuan</option>
-                              <?php } ?>
+                              <?php 
+                              $genders = array(
+                                'L' => 'Laki-laki', 
+                                'P' => 'Perempuan'
+                              );
+
+                              foreach ($genders as $key => $val) {
+                                  if ($student['gender'] == $key) { 
+                              ?>
+                              <option value="<?= $key ?>" selected><?= $val ?></option>
+                              <?php } else { ?>
+                              <option value="<?= $key ?>"><?= $val ?></option>
+                              <?php
+                                }
+                              } 
+                              ?>
                             </select>
                           </label>
 
@@ -270,12 +288,29 @@ include APP . 'presentation/views/components/head.php';
 
                           <label class="block mt-4 text-sm">
                             <span class="text-gray-700 dark:text-gray-400">
-                              Departemen
+                              Kelas
                             </span>
-                            <input
+                            <select
                               class="block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
-                              name="department" value="<?= $student['department'] ?>" placeholder="Departemen"
-                              required />
+                              name="class" placeholder="Kelas" required value="<?= $student['class'] ?>">
+                              <?php 
+                              $class = array(
+                                10 => 'Kelas 10', 
+                                11 => 'Kelas 11',
+                                12 => 'Kelas 12'
+                              );
+
+                              foreach ($class as $key => $val) {
+                                  if ($student['class'] == $key) { 
+                              ?>
+                              <option value="<?= $key ?>" selected><?= $val ?></option>
+                              <?php } else { ?>
+                              <option value="<?= $key ?>"><?= $val ?></option>
+                              <?php
+                                }
+                              } 
+                              ?>
+                            </select>
                           </label>
 
                           <footer
@@ -303,8 +338,7 @@ include APP . 'presentation/views/components/head.php';
           </div>
         </div>
 
-        <div class="fixed inset-0 z-30 hidden items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"
-          id="modal-add-student">
+        <div class="fixed inset-0 z-30 hidden items-end bg-black bg-opacity-50 sm:items-center sm:justify-center" id="modal-add-student">
           <div
             class="w-full px-6 py-4 overflow-hidden bg-white rounded-t-lg dark:bg-gray-800 sm:rounded-lg sm:m-4 sm:max-w-xl"
             role="dialog" id="modal">
@@ -342,6 +376,24 @@ include APP . 'presentation/views/components/head.php';
                     id="insert-image-add" type="button">
                     Upload Gambar
                   </button>
+                </label>
+
+                <label class="block mt-4 text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">
+                    NIS
+                  </span>
+                  <input
+                    class="block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                    name="nis" placeholder="NIS" required />
+                </label>
+
+                <label class="block mt-4 text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">
+                    Email
+                  </span>
+                  <input
+                    class="block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                    name="email" placeholder="Email" required />
                 </label>
 
                 <label class="block mt-4 text-sm">
@@ -394,11 +446,15 @@ include APP . 'presentation/views/components/head.php';
 
                 <label class="block mt-4 text-sm">
                   <span class="text-gray-700 dark:text-gray-400">
-                    Departemen
+                    Kelas
                   </span>
-                  <input
+                  <select
                     class="block w-full mt-1 text-sm dark:text-gray-400 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
-                    name="department" placeholder="Departemen" required />
+                    name="class" placeholder="Kelas" required>
+                    <option value="10">Kelas 10</option>
+                    <option value="11">Kelas 11</option>
+                    <option value="12">Kelas 12</option>
+                  </select>
                 </label>
 
                 <footer class="flex flex-col items-center justify-end gap-2 sm:flex-row bg-white dark:bg-gray-800 mt-6">

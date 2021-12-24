@@ -21,8 +21,8 @@ function getStudentModels()
 function storeStudentModel($params) {
   $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);
 
-  $sql = "INSERT INTO students (name, address, gender, religion, school, department, photo) 
-          VALUES (:name, :address, :gender, :religion, :school, :department, :photo)";
+  $sql = "INSERT INTO students (nis, name, address, gender, religion, school, class, photo) 
+          VALUES (:nis, :name, :address, :gender, :religion, :school, :class, :photo)";
   $stmt = $db->prepare($sql);
 
   return $stmt->execute($params);
@@ -41,12 +41,13 @@ function updateStudentModel($params) {
   $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);
 
   $sql = "UPDATE students
-        SET name=:name,
+        SET nis=:nis,
+        name=:name,
         address=:address,
         gender=:gender,
         religion=:religion,
         school=:school,
-        department=:department,
+        class=:class,
         photo=:photo
         WHERE student_id=:student_id";
   $stmt = $db->prepare($sql);
