@@ -6,6 +6,10 @@ function getAllStudent() {
   return getStudentModels();
 }
 
+function getStudent($id) {
+  return getStudentModelById($id);
+}
+
 function insertStudent() {
   $nis = filter_input(INPUT_POST, 'nis', FILTER_SANITIZE_STRING);
   $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
@@ -51,7 +55,7 @@ function insertStudent() {
 
     if ($pass_image) {
       if (storeStudentModel($params)) {
-        header("Location: /");
+        header("Location: /daftar-siswa");
       };
     }
   }
@@ -66,7 +70,7 @@ function deleteStudent()
   );
 
   if (deleteStudentModelById($params)) {
-    header("Location: /");
+    header("Location: /daftar-siswa");
   };
 }
 
@@ -120,7 +124,7 @@ function updateStudent() {
 
     if ($pass_image) {
       if (updateStudentModel($params)->rowCount() > 0) {
-        header("Location: /");
+        header("Location: /daftar-siswa");
       };
     }
   }

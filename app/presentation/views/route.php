@@ -10,7 +10,21 @@ switch ($_SERVER['REQUEST_URI']) {
     if (!authenticate()) {
       $students = getAllStudent();
 
-      require APP . 'presentation/views/main/student/halamanUtama.php';
+      require APP . 'presentation/views/main/admin/student/index.php';
+    }
+    break;
+
+  case '/daftar-siswa':
+    if (!authenticate()) {
+      $students = getAllStudent();
+
+      require APP . 'presentation/views/main/admin/student/index.php';
+    }
+    break;
+
+  case '/daftar-siswa/tambah':
+    if (!authenticate()) {
+      require APP . 'presentation/views/main/admin/student/create.php';
     }
     break;
 
@@ -26,12 +40,12 @@ switch ($_SERVER['REQUEST_URI']) {
     }
     break;
 
-    case '/user':
-      if (!authenticate()) {
-        $students = getAllStudent();
-        require APP . 'presentation/views/main/student/index.php';
-      }
-      break;
+  case '/user':
+    if (!authenticate()) {
+      $students = getAllStudent();
+      require APP . 'presentation/views/main/student/index.php';
+    }
+    break;
 
   default:
     http_response_code(404);

@@ -18,6 +18,20 @@ function getStudentModels()
   return $stmt->fetchAll();
 }
 
+function getStudentModelById($id)
+{
+  $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);
+
+  $sql = "SELECT * FROM students WHERE student_id=:student_id";
+  $stmt = $db->prepare($sql);
+
+  $params = array(":student_id" => $id);
+
+  $stmt->execute($params);
+
+  return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 function storeStudentModel($params) {
   $db = new PDO(DB_CONNECTION, DB_USER, DB_PASS);
 
