@@ -33,11 +33,11 @@ function register()
     echo "Password konfirmasi tidak sama!";
   } else {
     if ($email && $password && $name) {
-
       $params = array(
         ":name" => $name,
         ":password" => $password,
-        ":email" => $email
+        ":email" => $email,
+        ":role" => 0,
       );
 
       if (storeUserModel($params)) {
