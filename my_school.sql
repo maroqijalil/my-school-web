@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 24 Des 2021 pada 17.11
+-- Waktu pembuatan: 24 Des 2021 pada 23.01
 -- Versi server: 8.0.27-0ubuntu0.20.04.1
 -- Versi PHP: 7.4.3
 
@@ -25,6 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `parents`
+--
+
+CREATE TABLE `parents` (
+  `parent_id` int NOT NULL,
+  `user_id` int DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data untuk tabel `parents`
+--
+
+INSERT INTO `parents` (`parent_id`, `user_id`, `name`, `email`) VALUES
+(1, NULL, 'Fiqey', 'ortu@ortu.com');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `payments`
 --
 
@@ -33,9 +53,15 @@ CREATE TABLE `payments` (
   `student_id` varchar(255) NOT NULL,
   `payment_date` date DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
-  `total` int NOT NULL,
-  `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+  `total` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data untuk tabel `payments`
+--
+
+INSERT INTO `payments` (`payment_id`, `student_id`, `payment_date`, `photo`, `total`) VALUES
+(1, '5', '2021-12-18', '//localhost:8000/assets/img/pembayaran/1640342728_Penerimaan-Maba-1.jpg', 1000000);
 
 -- --------------------------------------------------------
 
@@ -55,17 +81,14 @@ CREATE TABLE `students` (
   `school` varchar(255) DEFAULT NULL,
   `class` int DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `students`
 --
 
 INSERT INTO `students` (`student_id`, `user_id`, `password`, `nis`, `name`, `address`, `gender`, `religion`, `school`, `class`, `photo`) VALUES
-(1, NULL, NULL, '0989080gg', 'Muchamad Jalil', 'jalil', 'L', 'j', 'j', 10, '//localhost:8000/assets/img/siswa/1640316751_Screenshot from 2021-12-24 00-23-14.png'),
-(2, NULL, NULL, '123445', 'Indriati', 'Surabaya', 'P', 'Islam', 'SMAN 1 Pasuruan', 12, '//localhost:8000/assets/img/siswa/1640320557_Penerimaan-Maba-1 (1).jpg'),
-(3, NULL, NULL, '1344', 'wegf', 'wgqf', 'L', 'sffs', 'sfdaf', 10, ''),
-(4, 2, 'SBvm5ntV', '99', 'k', 'k', 'L', 'k', 'kk', 11, '');
+(6, 4, 'BAErtuPc', '123132', 'siswaaaaa', 'jln', 'L', 'islam', 'smp', 10, '//localhost:8000/assets/img/siswa/1640343977_Penerimaan-Maba-1.jpg');
 
 -- --------------------------------------------------------
 
@@ -81,14 +104,14 @@ CREATE TABLE `teachers` (
   `degree` varchar(30) NOT NULL,
   `nip` varchar(30) NOT NULL,
   `photo` varchar(255) DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `teachers`
 --
 
 INSERT INTO `teachers` (`teacher_id`, `user_id`, `name`, `gender`, `degree`, `nip`, `photo`) VALUES
-(3, NULL, 'Sayang', 'P', 'S.Kom', '1322154', '//localhost:8000/assets/img/guru/1640323576_Screenshot_from_2021-12-24_00-23-20-removebg-preview.png');
+(4, NULL, 'Fitrah', 'L', 'S.Kom', '123456', '//localhost:8000/assets/img/guru/1640342628_Penerimaan-Maba-1 (1).jpg');
 
 -- --------------------------------------------------------
 
@@ -102,19 +125,28 @@ CREATE TABLE `users` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `role` int NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `role`) VALUES
-(1, 'jalil', 'jalil@jalil.com', '$2y$10$5z2tUYCiQ6ERzGffJyHFye8EbTxPK24rb5v7ckR.kXxEyWp9a32Fm', 0),
-(2, 'k', 'jalil@jalil.commm', '$2y$10$zEmaMNahScPD6mUt2dlLoOZBI0ePg1pQHH..p6wvMmSYqOC86t1jC', 2);
+(1, 'admin', 'admin@admin.com', '$2y$10$8MsfQU/jJc3SoIfSMj7VFurb/VAKG1EDYUmLxlEgShUQU3wNjd4am', 0),
+(2, 'siswaaa', 'siswa@siswa.com', '$2y$10$YgsaXh/7OsePGggjYsBS8OHaGMzKqF6mCgcQzUKi8eqJkjTZLn6TW', 2),
+(3, 'admin1', 'admin1@admin1.com', '$2y$10$RvRqV01206Q/ZE3mc0ytpeAWXwctjzXLj96AUl3JPXJE7kGgt.fYC', 0),
+(4, 'siswa', 'siswa1@siswa1.com', '$2y$10$PTTfbkym0XFrNc.TUpxLieHKVcIRyBAThB26onNfsQPQCRfakhMdi', 2);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `parents`
+--
+ALTER TABLE `parents`
+  ADD PRIMARY KEY (`parent_id`),
+  ADD UNIQUE KEY `parent_id` (`parent_id`);
 
 --
 -- Indeks untuk tabel `payments`
@@ -147,28 +179,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `parents`
+--
+ALTER TABLE `parents`
+  MODIFY `parent_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT untuk tabel `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `payment_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `students`
 --
 ALTER TABLE `students`
-  MODIFY `student_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `student_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `teacher_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `teacher_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

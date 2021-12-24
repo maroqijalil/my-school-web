@@ -430,7 +430,7 @@ include APP . 'presentation/views/components/head.php';
     <!--- text --->
     <div class="text-container">
       <p>Hallo,</p>
-      <p><?= $student['name'] ?></p>
+      <p>Siswa</p>
       <p>Selamat datang di Halaman Utama My School</p>
       <button class="hire-btn" onclick="location.href='/'">Home</button>
       <!-- <button class="down-cv">Manajemen Siswa</button> -->
