@@ -35,7 +35,7 @@ CREATE TABLE `payments` (
   `photo` varchar(255) DEFAULT NULL,
   `total` int NOT NULL,
   `create_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,7 @@ CREATE TABLE `students` (
   `school` varchar(255) DEFAULT NULL,
   `class` int DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data untuk tabel `students`
@@ -81,7 +81,7 @@ CREATE TABLE `teachers` (
   `degree` varchar(30) NOT NULL,
   `nip` varchar(30) NOT NULL,
   `photo` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data untuk tabel `teachers`
@@ -102,7 +102,7 @@ CREATE TABLE `users` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `role` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Dumping data untuk tabel `users`
