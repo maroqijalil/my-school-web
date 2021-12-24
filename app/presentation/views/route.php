@@ -10,9 +10,7 @@ require_once APP . 'presentation/controllers/main/payment/payment.php';
 switch ($_SERVER['REQUEST_URI']) {
   case '/':
     if (!authenticate()) {
-      $students = getAllStudent();
-
-      require APP . 'presentation/views/main/admin/student/index.php';
+      header("Location: /daftar-guru");
     }
     break;
 
